@@ -1,0 +1,167 @@
+{
+  "charter": {
+    "name": "Smart Healthcare Project Management System",
+    "client": "Five-hospital network",
+    "sponsor": "Hospital Management Board",
+    "manager": "Project Manager",
+    "start": "2026-08-03",
+    "deadline": "2026-11-23",
+    "budget": 5000000,
+    "reserve": 400000,
+    "status": "Executing",
+    "objectives": "Deliver appointments, lab reports, doctor schedules, online consultations and hospital billing across five hospitals, with patient records integrated end to end.",
+    "inScope": "Patient appointments\nLaboratory reports\nDoctor schedules\nOnline consultations\nHospital billing\nPatient records",
+    "outScope": "Hardware procurement\nLegacy data migration older than 2 years"
+  },
+  "stakeholders": [
+    { "id": 1, "name": "Hospital Management Board", "role": "Sponsor", "interest": "High" },
+    { "id": 2, "name": "Chief Medical Officer", "role": "Clinical approver", "interest": "High" },
+    { "id": 3, "name": "Hospital IT Heads (x5)", "role": "Primary users", "interest": "High" },
+    { "id": 4, "name": "Doctors & patients", "role": "End users", "interest": "Medium" }
+  ],
+  "plan": {
+    "scope": "Five functional modules plus integration with five hospital networks. AI preliminary diagnosis and mobile app are not in the baseline and enter only through change control.",
+    "phases": [
+      { "name": "Initiation & planning", "start": "2026-08-03", "end": "2026-08-16" },
+      { "name": "Architecture & design", "start": "2026-08-17", "end": "2026-08-30" },
+      { "name": "Database build", "start": "2026-08-31", "end": "2026-09-13" },
+      { "name": "Module development", "start": "2026-09-14", "end": "2026-10-12" },
+      { "name": "Integration & QA", "start": "2026-10-13", "end": "2026-11-02" },
+      { "name": "UAT & sign-off", "start": "2026-11-03", "end": "2026-11-16" },
+      { "name": "Deployment & handover", "start": "2026-11-17", "end": "2026-11-23" }
+    ],
+    "costs": [
+      { "name": "Analysis & design", "amount": 650000 },
+      { "name": "Database build", "amount": 500000 },
+      { "name": "Module development (4 modules)", "amount": 2850000 },
+      { "name": "Integration & QA", "amount": 350000 },
+      { "name": "UAT & sign-off support", "amount": 150000 },
+      { "name": "Deployment & handover", "amount": 100000 }
+    ],
+    "quality": [
+      { "id": 1, "criterion": "Backend unit test coverage", "target": "≥ 80%", "owner": "QA Engineer" },
+      { "id": 2, "criterion": "Critical defects open at go-live", "target": "0", "owner": "QA Engineer" },
+      { "id": 3, "criterion": "Patient data encrypted at rest and in transit", "target": "100%", "owner": "Database Developer" },
+      { "id": 4, "criterion": "Appointment booking response time", "target": "< 2 s", "owner": "Backend Developer 1" },
+      { "id": 5, "criterion": "UAT sign-off from all five hospitals", "target": "5 / 5", "owner": "Project Manager" }
+    ]
+  },
+  "milestones": [
+    { "name": "Charter & plan approved", "date": "2026-08-16", "status": "Done" },
+    { "name": "Design freeze", "date": "2026-08-30", "status": "Done" },
+    { "name": "Core modules complete", "date": "2026-10-12", "status": "In progress" },
+    { "name": "QA sign-off", "date": "2026-11-02", "status": "Not started" },
+    { "name": "Go-live", "date": "2026-11-23", "status": "Not started" }
+  ],
+  "responsibilities": [
+    { "role": "Project Manager", "person": "Project Manager", "resp": "Overall delivery, stakeholder comms, change control, UAT coordination" },
+    { "role": "Backend Developers (2)", "person": "Backend Dev 1 & 2", "resp": "Scheduling, lab and billing APIs, business rules" },
+    { "role": "Frontend Developers (2)", "person": "Frontend Dev 1 & 2", "resp": "Dashboards, doctor schedule UI, patient portal" },
+    { "role": "Database Developer", "person": "Database Developer", "resp": "Schema, patient record store, merge logic, backups" },
+    { "role": "QA Engineer", "person": "QA Engineer", "resp": "Test plans, defect tracking, quality gate" }
+  ],
+  "log": [
+    { "date": "2026-08-16", "rag": "G", "pct": 12, "note": "Charter approved by sponsor. Team of seven onboarded." },
+    { "date": "2026-08-30", "rag": "G", "pct": 20, "note": "Design freeze met on schedule." },
+    { "date": "2026-10-02", "rag": "A", "pct": 55, "note": "Appointments module at 55%. Lab integration slipping 7 days due to HIS API delays." }
+  ],
+  "reqs": [
+    { "id": "R1", "title": "Patient appointment management", "desc": "Book, reschedule and cancel appointments with conflict-free slots per doctor.", "prio": "Must", "rank": 1, "status": "Approved", "source": "Hospital IT heads", "ac": "No double-booking possible; reschedule in 2 clicks or fewer", "approvedOn": "2026-08-16", "approvedBy": "Hospital Management Board" },
+    { "id": "R2", "title": "Laboratory report management", "desc": "Upload, store and view lab reports linked to each patient file.", "prio": "Must", "rank": 2, "status": "Approved", "source": "Hospital lab heads", "ac": "PDF reports attach to the patient file in 5 s or less", "approvedOn": "2026-08-16", "approvedBy": "Hospital Management Board" },
+    { "id": "R3", "title": "Doctor schedule management", "desc": "Doctors set availability, leave and on-call shifts.", "prio": "Must", "rank": 3, "status": "Approved", "source": "CMO office", "ac": "Schedule changes visible to the booking engine within 1 minute", "approvedOn": "2026-08-16", "approvedBy": "Hospital Management Board" },
+    { "id": "R4", "title": "Online consultations", "desc": "Text and video consultations booked from the patient portal.", "prio": "Must", "rank": 4, "status": "Approved", "source": "Hospital IT heads", "ac": "Consultation booked and joined end to end in test hospital", "approvedOn": "2026-08-16", "approvedBy": "Hospital Management Board" },
+    { "id": "R5", "title": "Hospital billing", "desc": "Generate itemised invoices per visit, including lab and consultation charges.", "prio": "Must", "rank": 5, "status": "Approved", "source": "Finance office", "ac": "Invoice totals match visit charges with zero rounding error", "approvedOn": "2026-08-16", "approvedBy": "Hospital Management Board" },
+    { "id": "R6", "title": "Patient record management", "desc": "One record per patient across the five hospitals, with safe duplicate merge.", "prio": "Must", "rank": 6, "status": "Approved", "source": "Hospital records office", "ac": "Duplicate merge keeps full history and passes audit log review", "approvedOn": "2026-08-16", "approvedBy": "Hospital Management Board" },
+    { "id": "R7", "title": "AI-based preliminary diagnosis", "desc": "Symptom-based decision support for triage. Advisory only.", "prio": "Should", "rank": 7, "status": "Proposed", "source": "Hospital management (CR-01)", "ac": "Advisory output only; clinician sign-off recorded on every case", "approvedOn": "", "approvedBy": "" },
+    { "id": "R8", "title": "Mobile application", "desc": "Android and iOS app for doctors and patients: schedules and reports.", "prio": "Should", "rank": 8, "status": "Proposed", "source": "Hospital management (CR-02)", "ac": "Core flows usable offline for 24 hours", "approvedOn": "", "approvedBy": "" }
+  ],
+  "wbs": [
+    { "id": "W1", "name": "Smart Healthcare PMS", "parent": null, "req": "" },
+    { "id": "W2", "name": "Appointments", "parent": "W1", "req": "R1" },
+    { "id": "W3", "name": "Scheduling engine", "parent": "W2", "req": "" },
+    { "id": "W4", "name": "Conflict checks", "parent": "W2", "req": "" },
+    { "id": "W5", "name": "Laboratory reports", "parent": "W1", "req": "R2" },
+    { "id": "W6", "name": "Doctor schedules", "parent": "W1", "req": "R3" },
+    { "id": "W7", "name": "Online consultation", "parent": "W1", "req": "R4" },
+    { "id": "W8", "name": "Hospital billing", "parent": "W1", "req": "R5" },
+    { "id": "W9", "name": "Patient records", "parent": "W1", "req": "R6" },
+    { "id": "W10", "name": "Duplicate-merge logic", "parent": "W9", "req": "" },
+    { "id": "W11", "name": "AI diagnosis engine", "parent": "W1", "req": "R7" },
+    { "id": "W12", "name": "Mobile application", "parent": "W1", "req": "R8" },
+    { "id": "W13", "name": "Integration & QA", "parent": "W1", "req": "" },
+    { "id": "W14", "name": "Deployment & handover", "parent": "W1", "req": "" }
+  ],
+  "changes": [
+    { "id": "CR-01", "title": "AI-based preliminary diagnosis module", "just": "Hospital management requested decision support during triage.", "requestedBy": "Hospital management", "submitted": "2026-09-20", "cost": 500000, "days": 14, "decision": "Pending", "req": "R7" },
+    { "id": "CR-02", "title": "Mobile application", "just": "Doctors and patients need on-the-go access to schedules and reports.", "requestedBy": "Hospital management", "submitted": "2026-09-20", "cost": 300000, "days": 7, "decision": "Pending", "req": "R8" },
+    { "id": "CR-03", "title": "SMS appointment reminders", "just": "Reduce no-shows at the five hospitals.", "requestedBy": "Hospital IT heads", "submitted": "2026-10-05", "cost": 60000, "days": 3, "decision": "Pending", "req": "" }
+  ],
+  "closure": [
+    { "t": "Final acceptance signed by sponsor", "done": false },
+    { "t": "All approved change requests closed", "done": false },
+    { "t": "Lessons learned recorded", "done": false },
+    { "t": "Team resources released", "done": false },
+    { "t": "Handover documents delivered to hospital IT", "done": false }
+  ],
+  "closeRec": { "lessons": "", "acceptance": "Pending", "date": "" },
+  "statusDate": "2026-10-02",
+  "team": [
+    { "id": "M1", "name": "Project Manager", "role": "PM" },
+    { "id": "M2", "name": "Backend Developer 1", "role": "Backend" },
+    { "id": "M3", "name": "Backend Developer 2", "role": "Backend" },
+    { "id": "M4", "name": "Frontend Developer 1", "role": "Frontend" },
+    { "id": "M5", "name": "Frontend Developer 2", "role": "Frontend" },
+    { "id": "M6", "name": "Database Developer", "role": "Database" },
+    { "id": "M7", "name": "QA Engineer", "role": "QA" }
+  ],
+  "acts": [
+    { "id": "A1", "name": "Charter, requirements & planning", "owner": "M1", "dur": 14, "deps": [], "budget": 250000, "pct": 100, "ac": 240000, "slip": 0 },
+    { "id": "A2", "name": "Architecture & UI/UX design", "owner": "M2", "dur": 14, "deps": ["A1"], "budget": 400000, "pct": 100, "ac": 415000, "slip": 0 },
+    { "id": "A3", "name": "Database schema & patient record store", "owner": "M6", "dur": 14, "deps": ["A2"], "budget": 500000, "pct": 100, "ac": 505000, "slip": 0 },
+    { "id": "A4", "name": "Appointment & scheduling module", "owner": "M2", "dur": 28, "deps": ["A3"], "budget": 800000, "pct": 55, "ac": 500000, "slip": 0 },
+    { "id": "A5", "name": "Lab reports & billing module", "owner": "M3", "dur": 28, "deps": ["A3"], "budget": 700000, "pct": 40, "ac": 330000, "slip": 7 },
+    { "id": "A6", "name": "Doctor schedules & dashboards", "owner": "M4", "dur": 28, "deps": ["A3"], "budget": 650000, "pct": 70, "ac": 470000, "slip": 0 },
+    { "id": "A7", "name": "Online consultation & patient portal", "owner": "M5", "dur": 28, "deps": ["A3"], "budget": 700000, "pct": 30, "ac": 240000, "slip": 0 },
+    { "id": "A8", "name": "Integration, QA & defect fixing", "owner": "M7", "dur": 21, "deps": ["A4", "A5", "A6", "A7"], "budget": 350000, "pct": 0, "ac": 0, "slip": 0 },
+    { "id": "A9", "name": "Hospital UAT & sign-off", "owner": "M1", "dur": 14, "deps": ["A8"], "budget": 150000, "pct": 0, "ac": 0, "slip": 0 },
+    { "id": "A10", "name": "Deployment & handover", "owner": "M1", "dur": 7, "deps": ["A9"], "budget": 100000, "pct": 0, "ac": 0, "slip": 0 }
+  ],
+  "crProg": {},
+  "thresholds": { "cpi": 0.95, "spi": 0.95 },
+  "defects": [
+    { "id": "D1", "title": "Double-booking allowed for the same doctor slot", "sev": "Critical", "act": "A4", "owner": "M2", "status": "Open" },
+    { "id": "D2", "title": "Duplicate patient record created on merge", "sev": "Critical", "act": "A3", "owner": "M6", "status": "In Progress" },
+    { "id": "D3", "title": "Lab PDF not attached to patient file", "sev": "Major", "act": "A5", "owner": "M3", "status": "Open" },
+    { "id": "D4", "title": "Rounding error on multi-test invoices", "sev": "Minor", "act": "A5", "owner": "M3", "status": "Resolved" }
+  ],
+  "checklist": [
+    { "id": "Q1", "item": "SRS signed off by hospital IT heads", "deliv": "Requirements specification", "result": "Pass", "by": "M7" },
+    { "id": "Q2", "item": "Database schema reviewed and normalised", "deliv": "DB schema", "result": "Pass", "by": "M7" },
+    { "id": "Q3", "item": "Backend unit test coverage at least 80%", "deliv": "Backend build", "result": "Fail", "by": "M7" },
+    { "id": "Q4", "item": "Patient data encrypted at rest", "deliv": "Security review", "result": "Pending", "by": "M7" },
+    { "id": "Q5", "item": "Appointment conflict test cases passed", "deliv": "Appointments module", "result": "Fail", "by": "M7" },
+    { "id": "Q6", "item": "User manual reviewed", "deliv": "Documentation", "result": "Pending", "by": "M1" }
+  ],
+  "risks": [
+    { "id": "K1", "title": "Scope creep from AI and mobile requests", "pp": "Unbudgeted modules extend cost and deadline", "L": 4, "I": 5, "prev": "Formal change control; scope freeze at design freeze", "corr": "Re-baseline via approved change request" },
+    { "id": "K2", "title": "Key backend developer absence", "pp": "Backend critical path stalls", "L": 3, "I": 4, "prev": "Pair programming; shared code ownership", "corr": "Reassign PM/QA support; accept slip days" },
+    { "id": "K3", "title": "Patient data privacy breach", "pp": "Unauthorised access to patient records", "L": 2, "I": 5, "prev": "Role-based access, encryption, audit logs", "corr": "Activate incident plan; notify hospital data officer" },
+    { "id": "K4", "title": "Late hospital HIS integration", "pp": "Lab and billing data unavailable at UAT", "L": 4, "I": 3, "prev": "Agree API contracts with hospital IT early", "corr": "Mock service layer; phased rollout" },
+    { "id": "K5", "title": "AI module cost overrun", "pp": "Budget exceeded for diagnosis module", "L": 3, "I": 4, "prev": "Fixed-scope vendor sprint for the model", "corr": "Replace model with a rules-based engine" },
+    { "id": "K6", "title": "Scheduling defects found late", "pp": "Double-booking reaches go-live", "L": 4, "I": 4, "prev": "Automated conflict tests every sprint", "corr": "Dedicated fix sprint before UAT" }
+  ],
+  "testcases": [
+    { "id": "TC-01", "title": "Baseline finish with no approved changes", "expected": "112 days", "actual": "112 days", "status": "PASS" },
+    { "id": "TC-02", "title": "Approving CR-01 and CR-02 extends finish by 21 days", "expected": "133 days", "actual": "133 days", "status": "PASS" },
+    { "id": "TC-03", "title": "Activity estimates + reserve equal approved budget", "expected": "PKR 4,900,000", "actual": "PKR 4,999,985", "status": "FAIL" },
+    { "id": "TC-04", "title": "Approving both changes adds their cost", "expected": "+PKR 800,000", "actual": "+PKR 800,000", "status": "PASS" },
+    { "id": "TC-05", "title": "Slip on a predecessor shifts its successor in the forecast", "expected": "3 days", "actual": "3 days", "status": "PASS" },
+    { "id": "TC-06", "title": "Circular dependency is detected", "expected": "Detected", "actual": "Detected", "status": "PASS" },
+    { "id": "TC-07", "title": "Unapproved requirement is blocked from WBS", "expected": "Blocked", "actual": "Blocked", "status": "PASS" },
+    { "id": "TC-08", "title": "Planned value never exceeds BAC", "expected": "≤ PKR 4,599,985", "actual": "PKR 2,982,128", "status": "PASS" },
+    { "id": "TC-09", "title": "CPI equals EV ÷ AC", "expected": "1.25", "actual": "1.25", "status": "PASS" },
+    { "id": "TC-10", "title": "Cost overrun warning raised exactly when CPI is below threshold", "expected": "Raised", "actual": "Raised", "status": "PASS" },
+    { "id": "TC-11", "title": "Empty requirement title is rejected", "expected": "Error raised", "actual": "Error raised", "status": "PASS" },
+    { "id": "TC-12", "title": "Risk score 4×5 falls in the Critical band", "expected": "Critical", "actual": "Critical", "status": "PASS" }
+  ]
+}
